@@ -19,7 +19,7 @@ public class Appointment {
 	dbconnect obj = new dbconnect();
 
 	// Inserting Appointments
-	public String insertAppoinment(String date, String time, int patId, int doctorID, int payId) {
+	public String insertAppoinment(String date, String time, String patId, String doctorID, String payId) {
 		String output = "";
 		try {
 			Connection con = obj.connect();
@@ -31,9 +31,9 @@ public class Appointment {
 
 			preparedStmt.setString(1, date);
 			preparedStmt.setString(2, time);
-			preparedStmt.setInt(3, patId);
-			preparedStmt.setInt(4, doctorID);
-			preparedStmt.setInt(5, payId);
+			preparedStmt.setInt(3, Integer.parseInt(patId));
+			preparedStmt.setInt(4, Integer.parseInt(doctorID));
+			preparedStmt.setInt(5, Integer.parseInt(payId));
 
 			preparedStmt.execute();
 			con.close();
@@ -121,6 +121,9 @@ public class Appointment {
 				String doctorID = rs.getString("doctorID");
 				String paymentID = Integer.toString(rs.getInt("paymentID"));
 				String Status = rs.getString("appointmentStatus");
+				
+				output += "<tr><td><input id=\"hidAppointmentIDUpdate\"name=\"hidAppointmentIDUpdate\"type=\"hidden\" value=\""
+						+ AppID + "\">" +  "</td>";
 
 				output += "<tr><td>" + AppID + "</td>";
 				output += "<td>" + date + "</td>";
@@ -129,6 +132,14 @@ public class Appointment {
 				output += "<td>" + doctorID + "</td>";
 				output += "<td>" + paymentID + "</td>";
 				output += "<td>" + Status + "</td>";
+				
+				
+				
+				output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-warning btnUpdate\"></td>"
+						+ "<td><form method=\"post\" action=\"Appointment.jsp\">"
+						+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
+						+ "<input name=\"hidAppointmentIDDelete\" type=\"hidden\" value=\"" + AppID + "\">"
+						+ "</form></td></tr>";
 			}
 
 			con.close();

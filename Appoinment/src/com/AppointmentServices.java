@@ -56,8 +56,8 @@ public class AppointmentServices {
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.TEXT_PLAIN)
 	public String insertAppointment(@FormParam("date") String date, @FormParam("time") String time,
-			@FormParam("patientID") int patientID, @FormParam("doctorID") int doctorID,
-			@FormParam("paymentID") int paymentID) {
+			@FormParam("patientID") String patientID, @FormParam("doctorID") String doctorID,
+			@FormParam("paymentID") String paymentID) {
 		String output = appObj.insertAppoinment(date, time, patientID, doctorID, paymentID);
 		return output;
 	}
