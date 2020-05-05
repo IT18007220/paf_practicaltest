@@ -14,7 +14,7 @@ $(document).on("click", "#btnSave", function(event)
 	$("#alertError").hide();
 
 	// Form validation-------------------
-	var status = validateItemForm();
+	var status = validateAppointmentForm();
 	if (status != true)
 	{
 		$("#alertError").text(status);
@@ -23,22 +23,22 @@ $(document).on("click", "#btnSave", function(event)
 	}
 
 	// If valid------------------------
-	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+	var type = ($("#hidAppointmentSave").val() == "") ? "POST" : "PUT";
 
 	$.ajax(
 	{
 		url : "AppointmentAPI",
 		type : type,
-		data : $("#formItem").serialize(),
+		data : $("#formAppointment").serialize(),
 		dataType : "text",
 		complete : function(response, status)
 		{
-			 onItemSaveComplete(response.responseText, status);
+			 onAppointmentSaveComplete(response.responseText, status);
 		}
 	});
 });
 
-function onItemSaveComplete(response, status)
+function onAppointmentSaveComplete(response, status)
 {
 	if (status == "success")
 	{
@@ -48,7 +48,7 @@ function onItemSaveComplete(response, status)
 		{
 			$("#alertSuccess").text("Successfully saved.");
 			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divAppGrid").html(resultSet.data);
 		} else if (resultSet.status.trim() == "error")
 		{
 			$("#alertError").text(resultSet.data);
@@ -63,14 +63,14 @@ function onItemSaveComplete(response, status)
 		$("#alertError").text("Unknown error while saving..");
 		$("#alertError").show();
 	}
-	$("#hidItemIDSave").val("");
-	$("#formItem")[0].reset();
+	$("#hidAppointmentSave").val("");
+	$("#formAppointment")[0].reset();
 }
 
 //UPDATE==========================================
 $(document).on("click", ".btnUpdate", function(event)
 {
-	$("#hidItemIDSave").val($(this).closest("tr").find('#hidItemIDUpdate').val());
+	$("#hidAppointmentSave").val($(this).closest("tr").find('#hidAppointmentUpdate').val());
 	$("#date").val($(this).closest("tr").find('td:eq(0)').text());
 	$("#time").val($(this).closest("tr").find('td:eq(1)').text());
 	$("#patientID").val($(this).closest("tr").find('td:eq(2)').text());
@@ -90,12 +90,12 @@ $(document).on("click", ".btnRemove", function(event)
 		 dataType : "text",
 		 complete : function(response, status)
 		 {
-		 onItemDeleteComplete(response.responseText, status);
+		 onAppointmentDeleteComplete(response.responseText, status);
 		 }
 		 });
 		});
 
-function onItemDeleteComplete(response, status)
+function onAppointmentDeleteComplete(response, status)
 {
 	if (status == "success")
 	{
@@ -104,7 +104,7 @@ function onItemDeleteComplete(response, status)
 		{
 			$("#alertSuccess").text("Successfully deleted.");
 			$("#alertSuccess").show();
-			$("#divItemsGrid").html(resultSet.data);
+			$("#divAppGrid").html(resultSet.data);
 		} else if (resultSet.status.trim() == "error")
 		{
 			$("#alertError").text(resultSet.data);
@@ -122,7 +122,7 @@ function onItemDeleteComplete(response, status)
 }
 
 //CLIENT-MODEL================================================================
-function validateItemForm()
+function validateAppointmentForm()
 {
 	// CODE
 	if ($("#date").val().trim() == "")
@@ -139,15 +139,7 @@ function validateItemForm()
 	{
 		return "Insert Patient ID.";
 	}
-	// is numerical value
-	//var tmpPrice = $("#itemPrice").val().trim();
-	//if (!$.isNumeric(tmpPrice))
-	//{
-	//	return "Insert a numerical value for Item Price.";
-	//}
-	// convert to decimal price
-	//$("#itemPrice").val(parseFloat(tmpPrice).toFixed(2));
-	// DESCRIPTION------------------------
+	
 	if ($("#doctorID").val().trim() == "")
 	{
 		return "Insert Doctor ID.";

@@ -15,7 +15,7 @@ pageEncoding="ISO-8859-1"%>
 			<div class="row">
 				<div class="col-6">
 					<h1>Appointment Management</h1>
-					<form id="formItem" name="formItem">
+					<form id="formAppointment" name="formAppointment">
  					Date:
  					<input id="date" name="date" type="date" class="form-control form-control-sm"> <br> 
  					Time:
@@ -29,15 +29,15 @@ pageEncoding="ISO-8859-1"%>
  					Status:
  					<input id="appointmentStatus" name="appointmentStatus" type="text" class="form-control form-control-sm"> <br>
  					<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
- 					<input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
+ 					<input type="hidden" id="hidAppointmentSave" name="hidAppointmentSave" value="">
 					</form>
 					<div id="alertSuccess" class="alert alert-success"></div>
 					<div id="alertError" class="alert alert-danger"></div>
 					<br>
-						<div id="divItemsGrid">
+						<div id="divAppGrid">
 							 <%
-							Appointment itemObj = new Appointment();
-							 out.print(itemObj.readAppointment());
+							Appointment AppObj = new Appointment();
+							 out.print(AppObj.readAppointment());
 							 %>
 						</div>
 				</div>

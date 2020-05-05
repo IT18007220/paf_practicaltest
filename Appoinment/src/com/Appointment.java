@@ -58,12 +58,12 @@ public class Appointment {
 			preparedStmt.execute();
 			con.close();
 			 
-			String newItems = readAppointment();
-			output = "{\"status\":\"success\", \"data\": \"" + newItems + "\"}";
+			String newAppointments = readAppointment();
+			output = "{\"status\":\"success\", \"data\": \"" + newAppointments + "\"}";
 		}
 		catch (Exception e)
 		{
-			output = "{\"status\":\"error\", \"data\": \"Error while inserting the item.\"}";
+			output = "{\"status\":\"error\", \"data\": \"Error while inserting the Appointment.\"}";
 			 
 			System.err.println(e.getMessage());
 			 
@@ -107,7 +107,7 @@ public class Appointment {
 				
 	
 				// Add into the html table
-				output += "<tr><td><input id='hidItemIDUpdate' name='hidItemIDUpdate' type='hidden' value='" + appointmentID + "'>" + date + "</td>";
+				output += "<tr><td><input id='hidAppointmentUpdate' name='hidAppointmentUpdate' type='hidden' value='" + appointmentID + "'>" + date + "</td>";
 				output += "<td>" + time + "</td>";
 				output += "<td>" + patientID + "</td>";
 				output += "<td>" + doctorID + "</td>";
@@ -126,7 +126,7 @@ public class Appointment {
 		}
 		catch (Exception e)
 		{
-			output = "Error while reading the items.";
+			output = "Error while reading the Appointments.";
 			System.err.println(e.getMessage());
 		}
 		return output;
@@ -164,14 +164,14 @@ public class Appointment {
 			preparedStmt.execute();
 			con.close();
 			 
-			String newItems = readAppointment();
+			String newAppointments = readAppointment();
 			output = "{\"status\":\"success\", \"data\": \"" +
-			newItems + "\"}";
+			newAppointments + "\"}";
 			 
 		}
 		catch (Exception e)
 		{
-			output = "{\"status\":\"error\", \"data\": \"Error while updating the item.\"}";
+			output = "{\"status\":\"error\", \"data\": \"Error while updating the Appointment.\"}";
 			 
 			System.err.println(e.getMessage());
 		}
@@ -205,14 +205,14 @@ public class Appointment {
 			preparedStmt.execute();
 			con.close();
 	
-			String newItems = readAppointment();
+			String newAppointments = readAppointment();
 			output = "{\"status\":\"success\", \"data\": \"" + 
-			newItems + "\"}";
+			newAppointments + "\"}";
 	 
 		}
 		catch (Exception e)
 		{
-			output = "{\"status\":\"error\", \"data\":\"Error while deleting the item.\"}";
+			output = "{\"status\":\"error\", \"data\":\"Error while deleting the Appointment.\"}";
 			System.err.println(e.getMessage());
 	 
 		}

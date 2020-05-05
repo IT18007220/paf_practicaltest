@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class AppointmentAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	Appointment itemObj=new Appointment();
+	Appointment AppObj=new Appointment();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -42,7 +42,7 @@ public class AppointmentAPI extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String output = itemObj.insertAppointment(request.getParameter("date"),
+		String output = AppObj.insertAppointment(request.getParameter("date"),
 				request.getParameter("time"),
 				request.getParameter("patientID"),
 				request.getParameter("doctorID"),
@@ -57,7 +57,7 @@ public class AppointmentAPI extends HttpServlet {
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		 String output = itemObj.updateAppointment(paras.get("hidItemIDSave").toString(),
+		 String output = AppObj.updateAppointment(paras.get("hidAppointmentSave").toString(),
 		 paras.get("date").toString(),
 		 paras.get("time").toString().replace("%3A",":"),
 		paras.get("patientID").toString(),
@@ -73,7 +73,7 @@ public class AppointmentAPI extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request);
-		String output = itemObj.deleteAppointment(paras.get("AppointmentID").toString());
+		String output = AppObj.deleteAppointment(paras.get("AppointmentID").toString());
 		response.getWriter().write(output);
 	}
 	
