@@ -25,7 +25,7 @@ public class Appointment {
 		}
 		return con;
 	}
-
+//Insert Appointment
 	public String insertAppointment(String date, String time,String patientID, String doctorID, String paymentID, String appointmentStatus)
 	{
 		String output = "";
@@ -72,7 +72,7 @@ public class Appointment {
 		return output;
 			
 	} 
-
+//Read Appointments
 	public String readAppointment()
 	{
 		String output = "";
@@ -131,7 +131,7 @@ public class Appointment {
 		}
 		return output;
 	}
-
+//Update Appointment
 	public String updateAppointment(String appointmentID, String date, String time,String patientID, String doctorID,String paymentID,String appointmentStatus)
 	{
 			 
@@ -179,7 +179,7 @@ public class Appointment {
 		return output;
 			 
 	} 
-	
+//Delete Appointment	
 	public String deleteAppointment(String appointmentID)
 	{
 		String output = "";

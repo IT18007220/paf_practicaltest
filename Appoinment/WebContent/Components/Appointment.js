@@ -124,30 +124,32 @@ function onAppointmentDeleteComplete(response, status)
 //CLIENT-MODEL================================================================
 function validateAppointmentForm()
 {
-	// CODE
+	// DATE
 	if ($("#date").val().trim() == "")
 	{
 		return "Insert date.";
 	}
-	// NAME
+	// TIME
 	if ($("#time").val().trim() == "")
 	{
 		return "Insert time.";
 	}
-	// PRICE-------------------------------
+	// PATIENT ID
 	if ($("#patientID").val().trim() == "")
 	{
 		return "Insert Patient ID.";
 	}
-	
+	//DOCTOR ID
 	if ($("#doctorID").val().trim() == "")
 	{
 		return "Insert Doctor ID.";
 	}
+	//PAYMENT ID
 	if ($("#paymentID").val().trim() == "")
 	{
 		return "Insert Payment ID.";
 	}
+	//APPOINTMENT STATUS
 	if ($("#appointmentStatus").val().trim() == "")
 	{
 		return "Insert Appointment Status.";
