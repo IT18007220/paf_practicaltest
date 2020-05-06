@@ -18,17 +18,15 @@ pageEncoding="ISO-8859-1"%>
 		
 <%
 	Class.forName("com.mysql.jdbc.Driver");
-// java.sql.Connection connection = DriverManager.getConnection(
-// 		"jdbc:mysql://localhost:3306/pafdb?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-// 		"root", "");
+
 	dbconnect con = new dbconnect();
 
 	//Connection connection = con.connect();
 	Connection connection = con.connect();
 	
-String query1 = "SELECT Doctor_ID,D_Name from hospital_docters";	
-Statement stmt1 = connection.createStatement();
-ResultSet rs1 = stmt1.executeQuery(query1);
+	String query1 = "SELECT Doctor_ID,D_Name from hospital_docters";	
+	Statement stmt1 = connection.createStatement();
+	ResultSet rs1 = stmt1.executeQuery(query1);
 
 
 %>
